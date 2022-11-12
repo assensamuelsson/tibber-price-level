@@ -1,0 +1,42 @@
+{
+  "name": "tibber-price-level",
+  "version": "1.0.0",
+  "description": "Spot price level calculated based on the Tibber API",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc",
+    "start": "node dist/index.js",
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
+    "test": "node --loader tsx --test *.spec.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/assensamuelsson/tibber-price-level.git"
+  },
+  "keywords": [
+    "spot",
+    "price",
+    "tibber"
+  ],
+  "author": "Andreas Samuelsson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/assensamuelsson/tibber-price-level/issues"
+  },
+  "homepage": "https://github.com/assensamuelsson/tibber-price-level#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.14",
+    "@types/nock": "^11.1.0",
+    "@types/node": "^18.11.9",
+    "@types/supertest": "^2.0.12",
+    "concurrently": "^7.5.0",
+    "nock": "^13.2.9",
+    "supertest": "^6.3.1",
+    "tsx": "^3.11.0",
+    "typescript": "^4.8.4"
+  }
+}
