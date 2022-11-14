@@ -7,8 +7,9 @@ npm ci
 npm run build
 cd ..
 
-docker build --tag tibber-price-level .
+docker build --tag tibber-price-level --platform=linux/amd64 .
+rm -rf build
 
 docker tag tibber-price-level:latest tibber-price-level:$1
-
-rm -rf build
+docker tag tibber-price-level:$1 $2/tibber-price-level:$1
+docker push $2/tibber-price-level:$1
