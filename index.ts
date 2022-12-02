@@ -1,7 +1,11 @@
 import { Express } from 'express';
 import dotenv from 'dotenv';
 
-import createApp from './app';
+import createApp from './src/app';
+import ITibber, { TibberResponse } from './src/tibber/i-tibber';
+import Cache from './src/cache/cache';
+import Tibber from './src/tibber/tibber';
+import ICache from './src/cache/i-cache';
 
 dotenv.config();
 
@@ -14,6 +18,9 @@ if (!homeId || !token) {
   process.exit(1);
 }
 
-const app: Express = createApp(homeId, token);
+const cache: ICache<TibberResponse> = new Cache<TibberResponse>();
+const tibber: ITibber = new Tibber(token, homeId);
+
+const app: Express = createApp(cache, tibber);
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

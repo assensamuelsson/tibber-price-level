@@ -7,7 +7,7 @@
     "build": "npx tsc",
     "start": "node dist/index.js",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
-    "test": "node --loader tsx --test *.spec.ts"
+    "test": "node --loader tsx --test ./src/**/*.spec.ts"
   },
   "repository": {
     "type": "git",

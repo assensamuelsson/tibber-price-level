@@ -8,6 +8,6 @@ COPY ["package.json", "package-lock.json", "./"]
 
 RUN npm ci --production
 
-COPY build/dist/* .
+COPY build/dist .
 
 CMD ["node", "index.js"]
