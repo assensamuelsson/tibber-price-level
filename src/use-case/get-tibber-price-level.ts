@@ -45,8 +45,6 @@ export default class GetTibberPriceLevel implements IGetTibberPriceLevel {
       );
     });
 
-    console.log(now, " - Current is ", JSON.stringify(current));
-
     if (!current) {
       return {
         level: 'UNDEFINED',
@@ -58,8 +56,6 @@ export default class GetTibberPriceLevel implements IGetTibberPriceLevel {
       const q40 = quantile(costs, 0.4);
       const q60 = quantile(costs, 0.6);
       const q80 = quantile(costs, 0.8);
-
-      console.log(now, " - Quantiles", q20, q40, q60, q80);
 
       let level;
       if (current.total < q20) {
@@ -82,6 +78,11 @@ export default class GetTibberPriceLevel implements IGetTibberPriceLevel {
 
       return {
         level,
+        current: current.total,
+        q20,
+        q40,
+        q60,
+        q80,
       };
     }
   }
