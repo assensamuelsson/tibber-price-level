@@ -17,14 +17,14 @@ export default class GetTibberPriceLevel implements IGetTibberPriceLevel {
 
     let response: TibberResponse;
     if (!cached) {
-      console.log(now, " - TibberResponse not in cache or expired - Fetching...");
+      console.log("TibberResponse not in cache or expired - Fetching...");
 
       response = await this.tibber.get();
 
       const expireAt = new Date(response.data.viewer.home.currentSubscription.priceInfo.today[14].startsAt);
       expireAt.setDate(expireAt.getDate() + 1);
 
-      console.log(now, " - Setting cache value with expireAt: " + expireAt);
+      console.log("Setting cache value with expireAt: " + expireAt);
       this.cache.put(response, expireAt);
     } else {
       response = cached;
